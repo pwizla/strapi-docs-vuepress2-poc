@@ -1,10 +1,3 @@
----
-sidebar_position: 3
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Configuring fields for content-types
 
 :::note Development-only
@@ -15,30 +8,28 @@ Content-types are composed of one or several fields. Each field is designed to c
 
 In the Content-type Builder, fields can be added at the creation of a new content-type or component, or afterward when a content-type or component is edited or updated. The following documentation lists all existing regular fields but also tackles the specificities of components and dynamic zones. For each, you will find a definition, explanation of the form they take once in the Content Manager, and instructions to configure them.
 
-:::note
+:::info 
 Depending on what content-type or component is being created or edited, not all fields -including components and dynamic zones- are always available.
 :::
 
-<img src="/img/assets/content-types-builder/fields-selection.png" alt="Field selection" width="80%" />
+<img src="/assets/content-types-builder/fields-selection.png" alt="Field selection" width="80%" />
 
 ## Regular fields
 
-### <img width="28" src="/img/assets/icons/ctb_text.svg" /> Text
+### <img width="28" src="/assets/icons/ctb_text.svg" /> Text
 
 The Text field displays a textbox that can contain small text. This field can be used for titles, descriptions, etc.
 
-<Tabs>
+::: tabs
 
-<TabItem value="base" label="Base settings">
+@tab Base settings
 
 | Setting name | Instructions                                                                                            |
 |--------------|---------------------------------------------------------------------------------------------------------|
 | Name         | Write the name of the Text field.                                                                       |
 | Type         | Choose between *Short text* and *Long text*, to allow more or less space to fill up the Text field.     |
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced settings">
+@tab Advanced settings
 
 | Setting name   | Instructions                                                                  |
 |----------------|-------------------------------------------------------------------------------|
@@ -51,25 +42,21 @@ The Text field displays a textbox that can contain small text. This field can be
 | Maximum length | Tick to define a maximum number of characters allowed.                        |
 | Minimum length | Tick to define a minimum number of characters allowed.                        |
 
-</TabItem>
+:::
 
-</Tabs>
-
-### <img width="28" src="/img/assets/icons/ctb_richtext.svg" /> Rich Text
+### <img width="28" src="/assets/icons/ctb_richtext.svg" /> Rich Text
 
 The Rich Text field displays an editor with formatting options to manage rich text. This field can be used for long written content.
 
-<Tabs>
+::: tabs
 
-<TabItem value="base" label="Base settings">
+@tab Base settings
 
 | Setting name | Instructions                           |
 |--------------|----------------------------------------|
 | Name         | Write the name of the Rich Text field. |
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced settings">
+@tab Advanced settings
 
 | Setting name   | Instructions                                                                |
 |----------------|-----------------------------------------------------------------------------|
@@ -81,26 +68,23 @@ The Rich Text field displays an editor with formatting options to manage rich te
 | Maximum length | Tick to define a maximum number of characters allowed.                      |
 | Minimum length | Tick to define a minimum number of characters allowed.                      |
 
-</TabItem>
+:::
 
-</Tabs>
-
-### <img width="28" src="/img/assets/icons/ctb_number.svg" /> Number
+### <img width="28" src="/assets/icons/ctb_number.svg" /> Number
 
 The Number field displays a field for any kind of number: integer, decimal and float.
 
-<Tabs>
+::: tabs
 
-<TabItem value="base" label="Base settings">
+@tab Base settings
 
 | Setting name  | Instructions                                                    |
 |---------------|-----------------------------------------------------------------|
 | Name          | Write the name of the Number field.                             |
 | Number format | Choose between *integer*, *big integer*, *decimal* and *float*. |
 
-</TabItem>
 
-<TabItem value="advanced" label="Advanced settings">
+@tab Advanced settings
 
 | Setting name   | Instructions                                                                |
 |----------------|-----------------------------------------------------------------------------|
@@ -112,26 +96,22 @@ The Number field displays a field for any kind of number: integer, decimal and f
 | Maximum value  | Tick to define a maximum value allowed.                      |
 | Minimum value  | Tick to define a minimum value allowed.                      |
 
-</TabItem>
+:::
 
-</Tabs>
-
-### <img width="28" src="/img/assets/icons/ctb_date.svg" /> Date
+### <img width="28" src="/assets/icons/ctb_date.svg" /> Date
 
 The Date field can display a date (year, month, day), time (hour, minute, second) or datetime (year, month, day, hour, minute, and second) picker.
 
-<Tabs>
+::: tabs
 
-<TabItem value="base" label="Base settings">
+@tab Base settings
 
 | Setting name  | Instructions                                                    |
 |---------------|-----------------------------------------------------------------|
 | Name          | Write the name of the Date field.                               |
 | Type          | Choose between *date*, *datetime* and *time*                    |
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced settings">
+@tab Advanced settings
 
 | Setting name   | Instructions                                                                |
 |----------------|-----------------------------------------------------------------------------|
@@ -142,25 +122,21 @@ The Date field can display a date (year, month, day), time (hour, minute, second
 | Unique field   | Tick to prevent another field to be identical to this one.                  |
 | Time interval  | The interval (in minutes) the timepicker will allow to select (for fields of type datetime and time). |
 
-</TabItem>
+:::
 
-</Tabs>
-
-### <img width="28" src="/img/assets/icons/ctb_boolean.svg" /> Boolean
+### <img width="28" src="/assets/icons/ctb_boolean.svg" /> Boolean
 
 The Boolean field displays a toggle button to manage boolean values (e.g. Yes or No, 1 or 0, True or False).
 
-<Tabs>
+::: tabs
 
-<TabItem value="base" label="Base settings">
+@tab Base settings
 
 | Setting name  | Instructions                                                    |
 |---------------|-----------------------------------------------------------------|
 | Name          | Write the name of the Boolean field.                            |
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced settings">
+@tab Advanced settings
 
 | Setting name   | Instructions                                                                |
 |----------------|-----------------------------------------------------------------------------|
@@ -170,26 +146,24 @@ The Boolean field displays a toggle button to manage boolean values (e.g. Yes or
 | Required field | Tick to prevent creating or saving an entry if the field is not filled in.  |
 | Unique field   | Tick to prevent another field to be identical to this one.                  |
 
-</TabItem>
+:::
 
-</Tabs>
-
-### <img width="28" src="/img/assets/icons/ctb_relation.svg" /> Relation
+### <img width="28" src="/assets/icons/ctb_relation.svg" /> Relation
 
 The Relation field allows to establish a relation with another content-type, that must be a collection type.
 
 There are 6 different types of relations:
 
-- <img width="25" src="/img/assets/icons/ctb_relation_oneway.svg" /> One way: Content-type A *has one* Content-type B
-- <img width="25" src="/img/assets/icons/ctb_relation_1to1.svg" /> One-to-one: Content-type A *has and belong to one* Content-type B
-- <img width="25" src="/img/assets/icons/ctb_relation_1tomany.svg" /> One-to-many: Content-type A *belongs to many* Content-type B
-- <img width="25" src="/img/assets/icons/ctb_relation_manyto1.svg" /> Many-to-one: Content-type B *has many* Content-type A
-- <img width="25" src="/img/assets/icons/ctb_relation_manytomany.svg" /> Many-to-many: Content-type A *has and belongs to many* Content-type B
-- <img width="25" src="/img/assets/icons/ctb_relation_manyway.svg" /> Many way: Content-type A *has many* Content-type B
+- <img width="25" src="/assets/icons/ctb_relation_oneway.svg" /> One way: Content-type A *has one* Content-type B
+- <img width="25" src="/assets/icons/ctb_relation_1to1.svg" /> One-to-one: Content-type A *has and belong to one* Content-type B
+- <img width="25" src="/assets/icons/ctb_relation_1tomany.svg" /> One-to-many: Content-type A *belongs to many* Content-type B
+- <img width="25" src="/assets/icons/ctb_relation_manyto1.svg" /> Many-to-one: Content-type B *has many* Content-type A
+- <img width="25" src="/assets/icons/ctb_relation_manytomany.svg" /> Many-to-many: Content-type A *has and belongs to many* Content-type B
+- <img width="25" src="/assets/icons/ctb_relation_manyway.svg" /> Many way: Content-type A *has many* Content-type B
 
-<Tabs>
+::: tabs
 
-<TabItem value="base" label="Base settings">
+@tab Base settings
 
 Configuring the base settings of the Relation field consists in choosing with which existing content-type the relation should be established and the kind of relation. The edition window of the Relation field displays 2 grey boxes, each representing one of the content-types in relation. Between the grey boxes are displayed all possible relation types.
 
@@ -198,33 +172,27 @@ Configuring the base settings of the Relation field consists in choosing with wh
 3. Choose the *Field name* of the content-type A, meaning the name that will be used for the field in the content-type A.
 4. (optional if disabled by the relation type) Choose the *Field name* of the content-type B.
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced settings">
+@tab Advanced settings
 
 | Setting name   | Instructions                                                                |
 |----------------|-----------------------------------------------------------------------------|
 | Private field  | Tick to make the field private and prevent it from being found via the API. |
 
-</TabItem>
+:::
 
-</Tabs>
-
-### <img width="28" src="/img/assets/icons/ctb_email.svg" /> Email
+### <img width="28" src="/assets/icons/ctb_email.svg" /> Email
 
 The Email field displays an email address field with format validation to ensure the email address is valid.
 
-<Tabs>
+::: tabs
 
-<TabItem value="base" label="Base settings">
+@tab Base settings
 
 | Setting name  | Instructions                                                    |
 |---------------|-----------------------------------------------------------------|
 | Name          | Write the name of the Email field.                              |
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced settings">
+@tab Advanced settings
 
 | Setting name   | Instructions                                                                |
 |----------------|-----------------------------------------------------------------------------|
@@ -236,25 +204,21 @@ The Email field displays an email address field with format validation to ensure
 | Maximum length | Tick to define a maximum number of characters allowed.                      |
 | Minimum length | Tick to define a minimum number of characters allowed.                      |
 
-</TabItem>
+:::
 
-</Tabs>
-
-### <img width="28" src="/img/assets/icons/ctb_password.svg" /> Password
+### <img width="28" src="/assets/icons/ctb_password.svg" /> Password
 
 The Password field displays a password field that is encrypted.
 
-<Tabs>
+::: tabs
 
-<TabItem value="base" label="Base settings">
+@tab Base settings
 
 | Setting name  | Instructions                                                    |
 |---------------|-----------------------------------------------------------------|
 | Name          | Write the name of the Password field.                           |
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced settings">
+@tab Advanced settings
 
 | Setting name   | Instructions                                                                |
 |----------------|-----------------------------------------------------------------------------|
@@ -266,28 +230,22 @@ The Password field displays a password field that is encrypted.
 | Maximum length | Tick to define a maximum number of characters allowed.                      |
 | Minimum length | Tick to define a minimum number of characters allowed.                      |
 
-</TabItem>
+:::
 
-</Tabs>
-
-### <img width="28" src="/img/assets/icons/ctb_enum.svg" /> Enumeration
+### <img width="28" src="/assets/icons/ctb_enum.svg" /> Enumeration
 
 The Enumeration field allows to configure a list of values displayed in a drop-down list.
 
-<!--- Add note about Enumeration fields known issues (i.e. recommending a relation using either oneWay or manyWay for some use-cases instead of enum) --->
+::: tabs
 
-<Tabs>
-
-<TabItem value="base" label="Base settings">
+@tab Base settings
 
 | Setting name  | Instructions                                                    |
 |---------------|-----------------------------------------------------------------|
 | Name          | Write the name of the Enumeration field.                        |
 | Values        | Write the values of the enumeration, one per line.              |
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced settings">
+@tab Advanced settings
 
 | Setting name   | Instructions                                                                |
 |----------------|-----------------------------------------------------------------------------|
@@ -298,30 +256,26 @@ The Enumeration field allows to configure a list of values displayed in a drop-d
 | Required field | Tick to prevent creating or saving an entry if the field is not filled in.  |
 | Unique field   | Tick to prevent another field to be identical to this one.                  |
 
-</TabItem>
+:::
 
-</Tabs>
-
-:::warning
+:::warning Caution
 Since Strapi v4.1.3, enumeration values should always have an alphabetical character preceding any number as it could otherwise cause the server to crash without notice when the GraphQL plugin is installed.
 :::
 
-### <img width="28" src="/img/assets/icons/ctb_media.svg" /> Media
+### <img width="28" src="/assets/icons/ctb_media.svg" /> Media
 
 The Media field allows to choose one or more media files (e.g. image, video) from those uploaded in the Media Library of the application.
 
-<Tabs>
+::: tabs
 
-<TabItem value="base" label="Base settings">
+@tab Base settings
 
 | Setting name  | Instructions                                                    |
 |---------------|-----------------------------------------------------------------|
 | Name          | Write the name of the Media field.                              |
 | Type          | Choose between *Multiple media* to allow multiple media uploads, and *Single media* to only allow one media upload. |
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced settings">
+@tab Advanced settings
 
 | Setting name   | Instructions                                                                |
 |----------------|-----------------------------------------------------------------------------|
@@ -331,25 +285,21 @@ The Media field allows to choose one or more media files (e.g. image, video) fro
 | Unique field   | Tick to prevent another field to be identical to this one.                  |
 | Select allowed types of media  | Click on the drop-down list to untick media types not allowed for this field. |
 
-</TabItem>
+:::
 
-</Tabs>
-
-### <img width="28" src="/img/assets/icons/ctb_json.svg" /> JSON
+### <img width="28" src="/assets/icons/ctb_json.svg" /> JSON
 
 The JSON field allows to configure data in a JSON format, to store JSON objects or arrays.
 
-<Tabs>
+::: tabs
 
-<TabItem value="base" label="Base settings">
+@tab Base settings
 
 | Setting name  | Instructions                                                    |
 |---------------|-----------------------------------------------------------------|
 | Name          | Write the name of the JSON field.                               |
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced settings">
+@tab Advanced settings
 
 | Setting name   | Instructions                                                                |
 |----------------|-----------------------------------------------------------------------------|
@@ -358,26 +308,22 @@ The JSON field allows to configure data in a JSON format, to store JSON objects 
 | Required field | Tick to prevent creating or saving an entry if the field is not filled in.  |
 | Unique field   | Tick to prevent another field to be identical to this one.                  |
 
-</TabItem>
+:::
 
-</Tabs>
-
-### <img width="28" src="/img/assets/icons/ctb_uid.svg" /> UID
+### <img width="28" src="/assets/icons/ctb_uid.svg" /> UID
 
 The UID field displays a field that sets a unique identifier, optionally based on an existing other field from the same content-type.
 
-<Tabs>
+::: tabs
 
-<TabItem value="base" label="Base settings">
+@tab Base settings
 
 | Setting name   | Instructions                                                    |
 |----------------|-----------------------------------------------------------------|
 | Name           | Write the name of the UID field. It must not contain special characters or spaces.                     |
 | Attached field | Choose what existing field to attach to the UID field. Choose *None* to not attach any specific field. |
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced settings">
+@tab Advanced settings
 
 | Setting name   | Instructions                                                                |
 |----------------|-----------------------------------------------------------------------------|
@@ -387,11 +333,9 @@ The UID field displays a field that sets a unique identifier, optionally based o
 | Maximum length | Tick to define a maximum number of characters allowed.                      |
 | Minimum length | Tick to define a minimum number of characters allowed.                      |
 
-</TabItem>
+:::
 
-</Tabs>
-
-## <img width="28" src="/img/assets/icons/ctb_component.svg" /> Components
+## <img width="28" src="/assets/icons/ctb_component.svg" /> Components
 
 Components are a combination of several fields. Components allow to create reusable sets of fields, that can be quickly added to content-types, dynamic zones but also nested into other components.
 
@@ -400,9 +344,9 @@ When configuring a component through the Content-type Builder, it is possible to
 - create a new component by clicking on *Create a new component* (see [Creating a new component](/docs/user-docs/content-types-builder/creating-new-content-type#creating-a-new-component)),
 - or use an existing one by clicking on *Use an existing component*.
 
-<Tabs>
+::: tabs
 
-<TabItem value="base" label="Base settings">
+@tab Base settings
 
 | Setting name       | Instructions                                                    |
 |--------------------|-----------------------------------------------------------------|
@@ -410,9 +354,7 @@ When configuring a component through the Content-type Builder, it is possible to
 | Select a component | When using an existing component only - Select from the drop-down list an existing component. |
 | Type               | Choose between *Repeatable component* to be able to use several times the component for the content-type, or *Single component* to limit to only one time the use of the component. |
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced settings">
+@tab Advanced settings
 
 | Setting name   | Instructions                                                                            |
 |----------------|-----------------------------------------------------------------------------------------|
@@ -422,25 +364,21 @@ When configuring a component through the Content-type Builder, it is possible to
 | Minimum value  | For repeatable components only - Tick to define a minimum number of characters allowed. |
 | Enable localization for this field | (if the [Internationalization plugin](#) is installed and localization is enabled for the content-type) Allow the component to be translated per available locale. |
 
-</TabItem>
+:::
 
-</Tabs>
-
-## <img width="28" src="/img/assets/icons/ctb_dz.svg" /> Dynamic zones
+## <img width="28" src="/assets/icons/ctb_dz.svg" /> Dynamic zones
 
 Dynamic zones are a combination of components that can be added to content-types. They allow a flexible content structure as once in the Content Manager, administrators have the choice of composing and rearranging the components of the dynamic zone how they want.
 
-<Tabs>
+::: tabs
 
-<TabItem value="base" label="Base settings">
+@tab Base settings
 
 | Setting name       | Instructions                                                    |
 |--------------------|-----------------------------------------------------------------|
 | Name               | Write the name of the dynamic zone for the content-type.        |
 
-</TabItem>
-
-<TabItem value="advanced" label="Advanced settings">
+@tab Advanced settings
 
 | Setting name   | Instructions                                                                            |
 |----------------|-----------------------------------------------------------------------------------------|
@@ -449,12 +387,10 @@ Dynamic zones are a combination of components that can be added to content-types
 | Minimum value  | Tick to define a minimum number of characters allowed.                                  |
 | Enable localization for this field | (if the [Internationalization plugin](#) is installed and localization is enabled for the content-type) Allow the dynamic zone to be translated per available locale. |
 
-</TabItem>
-
-</Tabs>
+:::
 
 After configuring the settings of the dynamic zone, its components must be configured as well. It is possible to either choose an existing component or create a new one.
 
-:::warning
+:::warning Caution
 When using dynamic zones, different components cannot have the same field name with different types (or with enumeration fields, different values).
 :::

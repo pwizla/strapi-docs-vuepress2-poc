@@ -12,15 +12,15 @@ To manage a content-type or a component, click on its name in the Collection typ
 
 Managing a content-type or component can include editing the general settings and the fields, but also deleting the whole content-type or component. For any chosen content-type of component, the right side of the Content-type Builder interface displays all available editing options.
 
-![Content-type Builder's edition interface](/img/assets/content-types-builder/content-types-builder_edition.png)
+![Content-type Builder's edition interface](/assets/content-types-builder/content-types-builder_edition.png)
 
-- Next to the name and optional description of the content-type or component, an ![Edit icon](/img/assets/icons/edit.svg) **Edit** button (1) allows to access the general settings of the content-type or component.
+- Next to the name and optional description of the content-type or component, an ![Edit icon](/assets/icons/edit.svg) **Edit** button (1) allows to access the general settings of the content-type or component.
 - In the top right corner:
   - the **Add new field** and **Save** buttons (2) allow to respectively add another field to the content-type or component (see [Configuring fields for content-types](/docs/user-docs/content-types-builder/configuring-fields-content-type)), or save any ongoing modification.
   - the **Configure the view** button allows to access the view configuration interface (see [Configuring the edit view](#))
 - Below the previous editing options, a table (3) lists all the fields created and configured for the content-type or component. From the fields table, it is possible to:
-  - Click on the edit button ![Edit icon](/img/assets/icons/edit.svg) to edit a field
-  - Click on the delete button ![Delete icon](/img/assets/icons/delete.svg) to delete a field
+  - Click on the edit button ![Edit icon](/assets/icons/edit.svg) to edit a field
+  - Click on the delete button ![Delete icon](/assets/icons/delete.svg) to delete a field
 
 :::warning
 Editing a field allows renaming it. However, keep in mind that regarding the database, renaming a field means creating a whole new field and deleting the former one. Although nothing is deleted from the database, the data that was associated with the former field name will not be accessible from the admin panel of your application anymore.
@@ -33,7 +33,7 @@ Content types and components can be deleted through the Content-type Builder. De
 To delete a content-type or component:
 
 1. In the Content-type Builder sub navigation, click on the name of the content-type or component to delete.
-2. In the edition interface of the chosen content-type or component, click on the ![Edit icon](/img/assets/icons/edit.svg) **Edit** button on the right side of the content-type's or component's name.
+2. In the edition interface of the chosen content-type or component, click on the ![Edit icon](/assets/icons/edit.svg) **Edit** button on the right side of the content-type's or component's name.
 3. In the edition window, click on the **Delete** button.
 4. In the confirmation window, confirm the deletion.
 
