@@ -1,10 +1,16 @@
 ---
-id: admin-panel-api
+description: Strapi's Admin Panel API for plugins allows a Strapi plugin to customize the front end part (i.e. the admin panel) of your application.
+category:
+  - Core APIs
+tag:
+  - stable
+canonicalUrl: https://docs.strapi.io/developer-docs/latest/developer-resources/plugin-api-reference/admin-panel.html
 ---
 
 # Admin Panel API for plugins
 
-A Strapi [plugin](#) can interact with both the [back end](#) or the front end of the Strapi app. The Admin Panel API is about the front end part, i.e. it allows a plugin to customize Strapi's [admin panel](/docs/user-docs/intro).
+
+A Strapi [plugin](/developer-docs/latest/plugins/plugins-intro.md) can interact with both the [back end](/developer-docs/latest/developer-resources/plugin-api-reference/server.md) or the front end of the Strapi app. The Admin Panel API is about the front end part, i.e. it allows a plugin to customize Strapi's [admin panel](/developer-docs/latest/development/admin-customization.md).
 
 The admin panel is a [React](https://reactjs.org/) application that can embed other React applications. These other React applications are the admin parts of each Strapi plugin.
 
@@ -14,7 +20,8 @@ To create a plugin that interacts with the Admin Panel API:
 2. Within this file, declare and export a plugin interface that uses the [available actions](#available-actions).
 3. Require this plugin interface in a `strapi-admin.js` file at the root of the plugin package folder:
 
-  ```js title="[plugin-name]/strapi-admin.js"
+  ```js
+  // path: [plugin-name]/strapi-admin.js
 
   'use strict';
 
@@ -45,6 +52,7 @@ Within the register function, a plugin can:
 * [create a new settings section](#createsettingsection)
 * define [injection zones](#injection-zones-api)
 * [add reducers](#reducers-api)
+* register the admin panel part of [custom fields](/developer-docs/latest/development/custom-fields.md#registering-a-custom-field-in-the-admin-panel)
 
 #### registerPlugin()
 
@@ -60,13 +68,14 @@ This function returns an object with the following parameters:
 | `name`           | String                   | Plugin name                                                                                        |
 | `injectionZones` | Object                   | Declaration of available [injection zones](#injection-zones-api)                                       |
 
-:::note
+::: note
 Some parameters can be imported from the `package.json` file.
 :::
 
 **Example:**
 
-```js title="my-plugin/admin/src/index.js"
+```js
+// path: my-plugin/admin/src/index.js
 
 // Auto-generated component
 import PluginIcon from './components/PluginIcon';
@@ -132,8 +141,7 @@ While [`register()`](#register) and [`bootstrap()`](#bootstrap) are lifecycle fu
 
 To reduce the build size, the admin panel is only shipped with 2 locales by default (`en` and `fr`). The `registerTrads()` function is used to register a plugin's translations files and to create separate chunks for the application translations. It does not need to be modified.
 
-<details>
-<summary>Example: Register a plugin's translation files</summary>
+::: details Example: Register a plugin's translation files
 
 ```jsx
 export default {
@@ -163,7 +171,7 @@ export default {
 };
 ```
 
-</details>
+:::
 
 ## Available actions
 
@@ -176,16 +184,17 @@ The Admin Panel API allows a plugin to take advantage of several small APIs to p
 | Declare an injection zone                | [Injection Zones API](#injection-zones-api) | [`registerPlugin()`](#registerplugin)             | [`register()`](#register)   |
 | Add a reducer                            | [Reducers API](#reducers-api)                                       | [`addReducers()`](#reducers-api)                      | [`register()`](#register)   |
 | Create a hook                          | [Hooks API](#hooks-api)                 | [`createHook()`](#hooks-api)                    | [`register()`](#register)   |
+| Register the admin panel part of a custom field | APIs for custom fields (see [custom fields documentation](/developer-docs/latest/development/custom-fields.md)) | `app.customFields.register()` | `register()` |
 | Add a single link to a settings section  | [Settings API](#settings-api)           | [`addSettingsLink()`](#addsettingslink)             | [`bootstrap()`](#bootstrap) |
 | Add multiple links to a settings section | [Settings API](#settings-api)           | [`addSettingsLinks()`](#addsettingslinks)           | [`bootstrap()`](#bootstrap) |
 | Inject a Component in an injection zone  | [Injection Zones API](#injection-zones-api) | [`injectComponent()`](#injection-zones-api)           | [`bootstrap()`](#register)  |
 | Register a hook                          | [Hooks API](#hooks-api)                 | [`registerHook()`](#hooks-api)                    | [`bootstrap()`](#bootstrap)   |
 
-:::strapi Replacing the WYSIWYG
-The WYSIWYG editor can be replaced by taking advantage of the [register lifecycle](#register) (see [new WYSIWYG field in the admin panel](#) guide).
+::: strapi Replacing the WYSIWYG
+The WYSIWYG editor can be replaced by taking advantage of the [register lifecycle](#register) (see [new WYSIWYG field in the admin panel](/developer-docs/latest/guides/registering-a-field-in-admin.md) guide).
 :::
 
-:::tip
+::: tip
 The admin panel supports dotenv variables.
 
 All variables defined in a `.env` file and prefixed by `STRAPI_ADMIN_` are available while customizing the admin panel through `process.env`.
@@ -209,7 +218,8 @@ The Menu API allows a plugin to add a new link to the main navigation through th
 
 **Example:**
 
-```jsx title="my-plugin/admin/src/index.js"
+```jsx
+// path: my-plugin/admin/src/index.js
 import PluginIcon from './components/PluginIcon';
 
 export default {
@@ -237,7 +247,7 @@ The Settings API allows:
 * [creating a new setting section](#createsettingsection)
 * adding [a single link](#addsettingslink) or [multiple links at once](#addsettingslinks) to existing settings sections
 
-:::note
+::: note
 Adding a new section happens in the [register](#register) lifecycle while adding links happens during the [bootstrap](#bootstrap) lifecycle.
 :::
 
@@ -270,7 +280,8 @@ The function takes 2 arguments:
 
 **Example:**
 
-```jsx title="my-plugin/admin/src/index.js"
+```jsx
+// path: my-plugin/admin/src/index.js
 
 const myComponent = async () => {
   const component = await import(
@@ -307,7 +318,8 @@ Add a unique link to an existing settings section.
 
 **Example:**
 
-```jsx title="my-plugin/admin/src/index.js"
+```jsx
+// path: my-plugin/admin/src/index.js
 
 const myComponent = async () => {
   const component = await import(
@@ -342,7 +354,8 @@ Add multiple links to an existing settings section.
 
 **Example:**
 
-```jsx title="my-plugin/admin/src/index.js"
+```jsx
+// path: my-plugin/admin/src/index.js
 
 const myComponent = async () => {
   const component = await import(
@@ -378,13 +391,13 @@ Plugins can use:
 * Strapi's [predefined injection zones](#using-predefined-injection-zones) for the Content Manager,
 * or custom injection zones, created by a plugin
 
-:::note
+::: note
 Injection zones are defined in the [register()](#register) lifecycle but components are injected in the [bootstrap()](#bootstrap) lifecycle.
 :::
 
 #### Using predefined injection zones
 
-Strapi admin panel comes with predefined injection zones so components can be added to the UI of the [Content Manager](/docs/user-docs/intro#):
+Strapi admin panel comes with predefined injection zones so components can be added to the UI of the [Content Manager](/user-docs/latest/content-manager/introduction-to-content-manager.md):
 
 <!-- TODO: maybe add screenshots once the design system is ready? -->
 
@@ -412,10 +425,10 @@ Both the `injectComponent()` and `injectContentManagerComponent()` methods accep
 | second argument | String | The zone where the component is injected
 | third argument  | Object | An object with the following keys:<ul><li>`name` (string): the name of the component</li><li>`Component` (function or class): the React component to be injected</li></ul> |
 
-<details>
-<summary>Example: Inject a component in the informations box of the Edit View of the Content Manager:</summary>
+::: details Example: Inject a component in the informations box of the Edit View of the Content Manager:
 
-```jsx title="path: my-plugin/admin/src/index.js"
+```jsx
+// path: my-plugin/admin/src/index.js
 
 export default {
   bootstrap(app) {
@@ -427,10 +440,9 @@ export default {
 }
 ```
 
-</details>
+:::
 
-<details>
-<summary>Example: Creating a new injection zone and injecting it from a plugin to another one:</summary>
+::: details Example: Creating a new injection zone and injecting it from a plugin to another one:
 
 ```jsx
 // Use the injection zone in a view
@@ -479,14 +491,13 @@ export default {
 };
 ```
 
-</details>
+:::
 
 #### Accessing data with the `useCMEditViewDataManager` React hook
 
 Once an injection zone is defined, the component to be injected in the Content Manager can have access to all the data of the Edit View through the `useCMEditViewDataManager` React hook.
 
-<details>
-<summary>Example of a basic component using the 'useCMEditViewDataManager' hook</summary>
+::: details Example of a basic component using the 'useCMEditViewDataManager' hook
 
 ```js
 import { useCMEditViewDataManager } from '@strapi/helper-plugin';
@@ -530,7 +541,7 @@ const MyCompo = () => {
 }
 ```
 
-</details>
+:::
 
 ### Reducers API
 
@@ -546,7 +557,8 @@ A reducer is declared as an object with this syntax:
 
 **Example:**
 
-```js title="my-plugin/admin/src/index.js"
+```js
+// path: my-plugin/admin/src/index.js
 import { exampleReducer } from './reducers'
 
 const reducers = {
@@ -576,10 +588,10 @@ Hooks can then be run in series, in waterfall or in parallel:
 * `runHookParallel` returns an array corresponding to the result of the promise resolved by the function executed, ordered
 * `runHookWaterfall` returns a single value corresponding to all the transformations applied by the different functions starting with the initial value `args`.
 
-<details>
-<summary>Example: Create a hook in a plugin and use it in another plugin</summary>
+:::details Example: Create a hook in a plugin and use it in another plugin
 
-```jsx title="my-plugin/admin/src/index.js"
+```jsx
+// path: my-plugin/admin/src/index.js
 // Create a hook in a plugin
 export default {
   register(app) {
@@ -587,9 +599,8 @@ export default {
   }
 }
 
-```
 
-```jsx title="my-other-plugin/admin/src/index.js"
+// path: my-other-plugin/admin/src/index.js
 // Use the hook in another plugin
 export default {
   bootstrap(app) {
@@ -605,16 +616,16 @@ export default {
 }
 ```
 
-</details>
+:::
 
 #### Predefined hook
 
-Strapi includes a predefined `Admin/CM/pages/ListView/inject-column-in-table` hook that can be used to add or mutate a column of the List View of the [Content Manager](/docs/user-docs/intro).
+Strapi includes a predefined `Admin/CM/pages/ListView/inject-column-in-table` hook that can be used to add or mutate a column of the List View of the [Content Manager](/user-docs/latest/content-manager/introduction-to-content-manager.md).
 
-<details>
-<summary>Example: 'Admin/CM/pages/ListView/inject-column-in-table' hook, as used by the Internationalization plugin to add the 'Content available in' column</summary>
+::: details Example: 'Admin/CM/pages/ListView/inject-column-in-table' hook, as used by the Internationalization plugin to add the 'Content available in' column
 
-```jsx title="./plugins/my-plugin/admin/src/index.js"
+```jsx
+// ./plugins/my-plugin/admin/src/index.js
 import get from 'lodash/get';
 import cellFormatter from './components/cellFormatter';
 
@@ -650,4 +661,4 @@ export default {
 }
 ```
 
-</details>
+:::

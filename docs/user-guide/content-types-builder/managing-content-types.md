@@ -22,7 +22,7 @@ Managing a content-type or component can include editing the general settings an
   - Click on the edit button ![Edit icon](/img/assets/icons/edit.svg) to edit a field
   - Click on the delete button ![Delete icon](/img/assets/icons/delete.svg) to delete a field
 
-:::caution
+:::warning
 Editing a field allows renaming it. However, keep in mind that regarding the database, renaming a field means creating a whole new field and deleting the former one. Although nothing is deleted from the database, the data that was associated with the former field name will not be accessible from the admin panel of your application anymore.
 :::
 
@@ -37,6 +37,6 @@ To delete a content-type or component:
 3. In the edition window, click on the **Delete** button.
 4. In the confirmation window, confirm the deletion.
 
-:::caution
+:::warning
 Deleting a content-type only deletes what was created and available from the Content-type Builder, and by extent from the admin panel of your Strapi application. All the data that was created based on that content-type is however kept in the database. For more information, please refer to the related [GitHub issue](https://github.com/strapi/strapi/issues/1114).
 :::

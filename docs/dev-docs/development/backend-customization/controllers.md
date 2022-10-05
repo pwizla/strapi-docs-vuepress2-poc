@@ -1,11 +1,14 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+---
+description: Strapi controllers are files that contain a set of methods reached by the client according to the requested route and can be customized according to your needs.
+sidebarDepth: 3
+canonicalUrl: https://docs.strapi.io/developer-docs/latest/development/backend-customization/controllers.html
+---
 
 # Controllers
 
-Controllers are JavaScript files that contain a set of methods, called actions, reached by the client according to the requested [route](#). Whenever a client requests the route, the action performs the business logic code and sends back the [response](#). Controllers represent the C in the model-view-controller (MVC) pattern.
+Controllers are JavaScript files that contain a set of methods, called actions, reached by the client according to the requested [route](/developer-docs/latest/development/backend-customization/routes.md). Whenever a client requests the route, the action performs the business logic code and sends back the [response](/developer-docs/latest/development/backend-customization/requests-responses.md#responses). Controllers represent the C in the model-view-controller (MVC) pattern.
 
-In most cases, the controllers will contain the bulk of a project's business logic. But as a controller's logic becomes more and more complicated, it's a good practice to use [services](#) to organize the code into re-usable parts.
+In most cases, the controllers will contain the bulk of a project's business logic. But as a controller's logic becomes more and more complicated, it's a good practice to use [services](/developer-docs/latest/development/backend-customization/services.md) to organize the code into re-usable parts.
 
 ## Implementation
 
@@ -15,15 +18,17 @@ Controllers can be [generated or added manually](#adding-a-new-controller). Stra
 
 A new controller can be implemented:
 
-- with the [interactive CLI command `strapi generate`](#)
+- with the [interactive CLI command `strapi generate`](/developer-docs/latest/developer-resources/cli/CLI.md#strapi-generate)
 - or manually by creating a JavaScript file:
   - in `./src/api/[api-name]/controllers/` for API controllers (this location matters as controllers are auto-loaded by Strapi from there)
-  - or in a folder like `./src/plugins/[plugin-name]/server/controllers/` for plugin controllers, though they can be created elsewhere as long as the plugin interface is properly exported in the `strapi-server.js` file (see [Server API for Plugins documentation](#))
+  - or in a folder like `./src/plugins/[plugin-name]/server/controllers/` for plugin controllers, though they can be created elsewhere as long as the plugin interface is properly exported in the `strapi-server.js` file (see [Server API for Plugins documentation](/developer-docs/latest/developer-resources/plugin-api-reference/server.md))
 
-<Tabs groupId="jsts">
-<TabItem value="js" label="JAVASCRIPT">
+::: code-tabs#language
 
-```js title="./src/api/restaurant/controllers/restaurant.js"
+@tab JavaScript
+
+```js
+// path: ./src/api/restaurant/controllers/restaurant.js
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
@@ -64,11 +69,10 @@ module.exports = createCoreController('api::restaurant.restaurant', ({ strapi })
 }));
 ```
 
-</TabItem>
+@tab TypeScript
 
-<TabItem value="ts" label="TYPESCRIPT">
-
-```js title="./src/api/restaurant/controllers/restaurant.ts"
+```ts
+// path: ./src/api/restaurant/controllers/restaurant.ts
 
 import { factories } from '@strapi/strapi'; 
 
@@ -109,22 +113,20 @@ export default factories.createCoreController('api::restaurant.restaurant', ({ s
 }));
 ```
 
-</TabItem>
-</Tabs>
+:::
 
 Each controller action can be an `async` or `sync` function.
-Every action receives a context object (`ctx`) as a parameter. `ctx` contains the [request context](#) and the [response context](#).
+Every action receives a context object (`ctx`) as a parameter. `ctx` contains the [request context](/developer-docs/latest/development/backend-customization/requests-responses.md#requests) and the [response context](/developer-docs/latest/development/backend-customization/requests-responses.md#responses).
 
-<details>
-<summary>Example: GET /hello route calling a basic controller</summary>
+::: details Example: GET /hello route calling a basic controller
 
-A specific `GET /hello` [route](#) is defined, the name of the router file (i.e. `index`) is used to call the controller handler (i.e. `index`). Every time a `GET /hello` request is sent to the server, Strapi calls the `index` action in the `hello.js` controller, which returns `Hello World!`:
+A specific `GET /hello` [route](/developer-docs/latest/development/backend-customization/routes.md) is defined, the name of the router file (i.e. `index`) is used to call the controller handler (i.e. `index`). Every time a `GET /hello` request is sent to the server, Strapi calls the `index` action in the `hello.js` controller, which returns `Hello World!`:
 
-<Tabs groupId="jsts">
+::: code-tabs#language
+@tab JavaScript
 
-<TabItem value="js" label="JAVASCRIPT">
-
-```js "title="./src/api/hello/routes/hello.js"
+```js
+// path: ./src/api/hello/routes/hello.js
 
 module.exports = {
   routes: [
@@ -137,7 +139,8 @@ module.exports = {
 }
 ```
 
-```js "title="./src/api/hello/controllers/hello.js"
+```js
+// path: ./src/api/hello/controllers/hello.js
 
 module.exports = {
   async index(ctx, next) { // called by GET /hello 
@@ -146,11 +149,10 @@ module.exports = {
 };
 ```
 
-</TabItem>
+@tab TypeScript
 
-<TabItem value="ts" label="TYPESCRIPT">
-
-```js "title="./src/api/hello/routes/hello.ts"
+```js
+// path: ./src/api/hello/routes/hello.ts
 
 export default {
   routes: [
@@ -163,7 +165,8 @@ export default {
 }
 ```
 
-```js title="./src/api/hello/controllers/hello.ts"
+```js
+// path: ./src/api/hello/controllers/hello.ts
 
 export default {
   async index(ctx, next) { // called by GET /hello 
@@ -172,14 +175,10 @@ export default {
 };
 ```
 
-</TabItem>
+:::
 
-</Tabs>
-
-</details>
-
-:::note
-When a new [content-type](#) is created, Strapi builds a generic controller with placeholder code, ready to be customized.
+::: note
+When a new [content-type](/developer-docs/latest/development/backend-customization/models.md#content-types) is created, Strapi builds a generic controller with placeholder code, ready to be customized.
 :::
 
 ### Extending core controllers
@@ -190,11 +189,11 @@ Default controllers and actions are created for each content-type. These default
 An action from a core controller can be replaced entirely by [creating a custom action](#adding-a-new-controller) and naming the action the same as the original action (e.g. `find`, `findOne`, `create`, `update`, or `delete`).
 :::
 
-<details>
-<summary>Collection type examples</summary>
+:::: details Collection type examples
 
-<Tabs>
-<TabItem value="find" label="`find()`">
+::: tabs 
+
+@tab find()
 
 ```js
 async find(ctx) {
@@ -206,9 +205,7 @@ async find(ctx) {
 }
 ```
 
-</TabItem>
-
-<TabItem value="findOne" label="findOne()">
+@tab findOne()
 
 ```js
 async findOne(ctx) {
@@ -220,9 +217,7 @@ async findOne(ctx) {
 }
 ```
 
-</TabItem>
-
-<TabItem value="create" label="create()">
+@tab create()
 
 ```js
 async create(ctx) {
@@ -234,9 +229,7 @@ async create(ctx) {
 }
 ```
 
-</TabItem>
-
-<TabItem value="update" label="update()">
+@tab update()
 
 ```js
 async update(ctx) {
@@ -248,9 +241,7 @@ async update(ctx) {
 }
 ```
 
-</TabItem>
-
-<TabItem value="delete" label="delete()">
+@tab delete()
 
 ```js
 async delete(ctx) {
@@ -262,15 +253,13 @@ async delete(ctx) {
 }
 ```
 
-</TabItem>
-</Tabs>
-</details>
+:::
+::::
 
-<details>
-<summary>Single type examples</summary>
-<Tabs>
+:::: details Single type examples
+::: tabs
 
-<TabItem value="find" label="find()">
+@tab find()
 
 ```js
 async find(ctx) {
@@ -282,9 +271,7 @@ async find(ctx) {
 }
 ```
 
-</TabItem>
-
-<TabItem value="update" label="update()">
+@tab update()
 
 ```js
 async update(ctx) {
@@ -296,9 +283,7 @@ async update(ctx) {
 }
 ```
 
-</TabItem>
-
-<TabItem value="delete" label="delete()">
+@tab delete()
 
 ```js
 async delete(ctx) {
@@ -310,13 +295,12 @@ async delete(ctx) {
 }
 ```
 
-</TabItem>
-</Tabs>
-</details>
+:::
+::::
 
 ## Usage
 
-Controllers are declared and attached to a route. Controllers are automatically called when the route is called, so controllers usually do not need to be called explicitly. However, [services](#) can call controllers, and in this case the following syntax should be used:
+Controllers are declared and attached to a route. Controllers are automatically called when the route is called, so controllers usually do not need to be called explicitly. However, [services](/developer-docs/latest/development/backend-customization/services.md) can call controllers, and in this case the following syntax should be used:
 
 ```js
 // access an API controller
@@ -325,6 +309,6 @@ strapi.controller('api::api-name.controller-name');
 strapi.controller('plugin::plugin-name.controller-name');
 ```
 
-:::tip
+::: tip
 To list all the available controllers, run `yarn strapi controllers:list`.
 :::

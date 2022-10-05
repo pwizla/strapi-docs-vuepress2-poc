@@ -1,12 +1,8 @@
 # Welcome to the Strapi Developer Docs!
 
-:::caution Canary build 🐥
-You're reading the bleeding edge version of our documentation. Some features might still be buggy.
-:::
-
 This documentation contains all technical documentation related to the setup, deployment, update and customization of your Strapi application.
 
-:::strapi Can't wait to start using Strapi?
+:::note Can't wait to start using Strapi?
 You can directly head to the [Quick Start](#)! <br/> If demos are more your thing, we have a [video demo](https://youtu.be/zd0_S_FPzKg), or you can request a [live demo](https://strapi.io/demo)!
 :::
 
@@ -30,7 +26,7 @@ Strapi is a community-oriented project with an emphasis on transparency. The Str
 
 Community members also take great part in providing the whole community a plethora of resources about Strapi. You can find [tutorials](https://strapi.io/tutorials/) on the Strapi website, where you can also create your own. Also, as an open-source project, the technical documentation of Strapi is open to contributions (see [Open-source & Contribution](#open-source-contribution)).
 
-:::strapi Want to join the community?
+:::note Want to join the community?
 You can join [GitHub](https://github.com/strapi/strapi), the [Forum](https://forum.strapi.io/), and the [Discord](https://discord.strapi.io) to share your ideas and opinions with other community members and members of the Strapi team. If you're looking for news and updates about Strapi, [Twitter](https://twitter.com/strapijs) and the [blog](https://strapi.io/blog) are pretty good places to start!
 :::
 
@@ -42,9 +38,28 @@ For enterprise support, please see our [Enterprise Support platform](https://sup
 
 ***
 
-💡 Docusaurus supports interactive code blocks. Try the one below:
+💡 The [Hope theme](https://vuepress-theme-hope.github.io/v2/guide/markdown/playground.htm) for VuePress v2 also supports interactive playgrounds. Try the one below:
 
-```jsx live
+::: playground#ts TypeScript playground demo
+
+@file index.ts
+
+```ts
+const msg = "hello world";
+
+const speak = (msg: string) => console.log(msg);
+
+speak(msg);
+```
+
+:::
+
+::: normal-demo Simple JavaScript demo
+
+```html
+<p>Simple clock demo<span id="demo"></span>
+
+```js
 function Clock(props) {
   const [date, setDate] = useState(new Date());
   useEffect(() => {
@@ -66,3 +81,25 @@ function Clock(props) {
   );
 }
 ```
+
+::: normal-demo Demo
+
+```html
+<h1>VuePress Theme Hope</h1>
+<p>is <span id="very">very</span> powerful!</p>
+<div>(Click on the red word above to display an alert)</div>
+```
+
+```js
+document.querySelector("#very").addEventListener("click", () => {
+  alert("Yay, I'm interactive!");
+});
+```
+
+```css
+span {
+  color: red;
+}
+```
+
+:::

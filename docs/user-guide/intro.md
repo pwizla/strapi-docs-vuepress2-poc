@@ -25,7 +25,7 @@ With all this in mind, you should be ready to start your Strapi experience!
 
 The admin panel is the back office of your Strapi application. From the admin panel, you will be able to manage content-types, and write their actual content. It is also from the admin panel that you will manage users, both administrators and end users of your Strapi application.
 
-:::caution
+:::warning
 In order to access the admin panel, your Strapi application must be launched, and you must be aware of the URL to its admin panel (e.g. `api.example.com/admin`).
 :::
 
@@ -86,7 +86,7 @@ To change the password of your account:
 
 Congratulations on being a new Strapi user! You're now ready to discover all the features and options that Strapi has to offer!
 
-:::strapi Welcome to the Strapi community!
+:::note Welcome to the Strapi community!
 
 If you have any trouble with your Strapi experience, you can reach us through [GitHub](https://github.com/strapi/) or our [forum](https://forum.strapi.io/)! The Strapi Community and Strapi team are always available to answer your questions or help you with anything!
 

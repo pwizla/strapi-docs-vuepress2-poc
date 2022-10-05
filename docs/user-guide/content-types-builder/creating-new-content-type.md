@@ -33,7 +33,7 @@ To create a new content-type:
 7. Add and configure chosen fields for your content-type (see [Configuring fields for content-types](/docs/user-docs/content-types-builder/configuring-fields-content-type)).
 8. Click on the **Save** button.
 
-:::caution
+:::warning
 New content-types are only considered created once they have been saved. Saving is only possible if at least one field has been added and properly configured. If these steps have not been done, a content-type cannot be created, listed in its category in the Content-type Builder, and cannot be used in the Content Manager.
 :::
 
