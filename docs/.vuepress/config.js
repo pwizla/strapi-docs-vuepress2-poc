@@ -1,8 +1,9 @@
-import { defineUserConfig } from 'vuepress'
+import { defineUserConfig } from "vuepress";
 import { hopeTheme } from "vuepress-theme-hope"
 import { searchPlugin } from "@vuepress/plugin-search";
 
 export default defineUserConfig({
+  // title: '',
   theme: hopeTheme({
     repo: 'strapi/documentation',
     colorMode: 'auto', // initial light/dark mode will be set according to user's browser/system preference
@@ -33,10 +34,10 @@ export default defineUserConfig({
               text: 'Admin Panel API for plugins', 
               link: '/dev-docs/api/admin-panel-api.md'
             },
-            // {
-            //   text: 'REST API', 
-            //   link: '/dev-docs/api/rest-api.md'
-            // },
+            {
+              text: 'REST API', 
+              link: '/dev-docs/api/rest-api.md'
+            },
           ]
         },
         {
@@ -58,18 +59,41 @@ export default defineUserConfig({
                 },
               ]
             }
-            // {
-            //   text: 'REST API', 
-            //   link: '/dev-docs/api/rest-api.md'
-            // },
           ]
         }
       ],
       '/user-guide/': [
+        {
+          text: 'Welcome!',
+          link: '/user-guide/intro'
+        },
+        {
+          isGroup: true,
+          text: 'Content-Type Builder',
+          children: [
+            {
+              text: 'Introduction to Content-Types Builder',
+              link: '/user-guide/content-types-builder/introduction-to-content-types-builder'
+            },
+            {
+              text: 'Creating content-types',
+              link: '/user-guide/content-types-builder/creating-new-content-type',
+            },
+            {
+              text: 'Managing Content-yypes',
+              link: '/user-guide/content-types-builder/managing-content-types'
+            },
+            {
+              text: 'Configuring fields for content-types',
+              link: '/user-guide/content-types-builder/configuring-fields-content-type'
+            },
 
+          ]
+        }
       ]
     }, 
     plugins: {
+      searchPlugin: searchPlugin({}),
       mdEnhance: {
         tabs: true,
         codetabs: true,
@@ -84,5 +108,6 @@ export default defineUserConfig({
         },
       },
     },
+    // footer: true
   })
 })
