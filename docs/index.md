@@ -23,7 +23,6 @@ copyright: false
     <a class="card-link" href="/dev-docs/intro"></a>
   </div>
 
-
   <div class="card">
     <h2 class="role">API Consumer</h2>
     <img class="persona persona3" src="/persona3.svg" />
@@ -33,6 +32,20 @@ copyright: false
 </div>
 
 <style>
+.hero {
+  background-color: #4945ff;
+  padding: 2em 0;
+  margin-left: -15%;
+  margin-right: -15%;
+  color: white;
+  margin-bottom: 3em;
+}
+.hero-info > .description {
+  color: white !important;
+  font-family: var(--font-family) !important;
+}
+.hero .main-title {
+}
 .card-link {
   position: absolute;
   top: 0;
