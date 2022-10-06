@@ -1,7 +1,7 @@
 ---
 home: true
 icon: home
-title: Home
+title: Strapi Documentation
 heroText: Strapi Documentation
 tagline: Design APIs fast, manage content easily.
 
